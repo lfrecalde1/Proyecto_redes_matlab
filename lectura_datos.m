@@ -6,3 +6,4 @@ clc,clear all,close all;
 
 %% Lectura de los datos de la base cambio cabmios
 pruebas
+ambios
