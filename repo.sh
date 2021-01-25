@@ -1,12 +1,13 @@
 #!/bin/bash
-echo "Estado del repositorio"
-git status -s
-echo "Agregar los cambios del repositorio"
-
+echo "Enter your message"
+read message
 git add .
-git commit -m "$1"
-echo "El commit agregado fue: $1"
-git push lfrecalde1 luchofercho96
-
-echo "Actualizacion Finalizada"
-
+git commit -m"${message}"
+if [ -n "$(git status - porcelain)" ];
+then
+ echo "IT IS CLEAN"
+else
+ git status
+ echo "Pushing data to remote server!!!"
+ git push
+fi
