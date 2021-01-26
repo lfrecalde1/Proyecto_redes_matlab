@@ -6,46 +6,64 @@ clc,clear all,close all;
 %% Lectura de los datos de la base 
 consumo_poste=Consumo_poste(14);
 kva_m = kvam();
+
 %% Definir poste a buscar
 poste_1=10879;
 poste_2=194409;
 poste_3=10888;
 
+poste_4=189313;
+poste_5=10892;
+poste_6=10891;
+poste_7=10890;
 
 
 %% DEFINIR EL VECTOR DE LOS POSTES
-postes=[poste_1,poste_2,poste_3];
+postes=[poste_1,poste_2,poste_3,poste_4,poste_5,poste_6,poste_7];
 
 
 %% DEFINIR LAS LONGITUDES 
 long_1=36.34;
 long_2=39.36;
 long_3=36.48;
-long=[long_1,long_2,long_3];
+
+long_4=28.68;
+long_5=43.08;
+long_6=41.12;
+long_7=27.97;
+
+long=[long_1,long_2,long_3,long_4,long_5,long_6,long_7];
 
 %% Definir el tipo de conductor a usar
-conductor_1="PRE. AL2X50(50)";
-conductor_2="PRE. AL2X50(50)";
-conductor_3="PRE. AL2X50(50)";
-conductor=[conductor_1,conductor_2,conductor_3];
+conductor_1="ASC2";
+conductor_2="ASC2";
+conductor_3="ASC2";
+
+conductor_4="ACSRDUPLEX";
+conductor_5="ASC2";
+conductor_6="ASC2";
+conductor_7="ASC2";
+
+conductor=[conductor_1,conductor_2,conductor_3,conductor_4,conductor_5,conductor_6,conductor_7];
 
 %% DEFINIR EL TIPO DE CONEXION A USAR EN EL SISTEMA
 tipo_conexion="monofasica";
 
+[Datos_1,resultado_1] = voltaje_extremos(postes,consumo_poste,tipo_conexion,kva_m,conductor,long);
 
+[i_dato,j_dato]=size(Datos_1);
 
-%% ENCONTRAR EL CONSUMO DE LOS POSTES RESPECTIVOS
-[consumo,aux_c] = datos_consumo(postes,consumo_poste);
-
-%% VERIFICACION DE QUE TIPO DE CONEXION SE VA A UTILIZAR
-[conexion,aux_t] = tipo(tipo_conexion,kva_m,conductor);
-
-
-%% GERNERACION DE LA MATRIX DE LOS DATOS INGRESADOS
-[Datos] = generacion_datos(postes,long,consumo,aux_c,conexion,aux_t);
-
-[i_dato,j_dato]=size(Datos)
-for k=1:j_dato
-    Parcial(k)=(Datos(2,k)*sum(Datos(3,1:k)))/Datos(4,k);
+n=3;
+m=j_dato-n;
+aux=1;
+jj=1;
+for j=1:m:m+1
+   for i=aux:1:j_dato-m+(j-1)
+       Parcial(i)=(Datos_1(2,i)*sum(Datos_1(3,aux:i)))/Datos_1(4,i);
+   end
+   resultado(jj)=sum(Parcial);
+   Parcial=[];
+   aux=aux+n;
+   jj=jj+1;
 end
-rsultado_1=sum(Parcial)
+
