@@ -48,7 +48,7 @@ conductor_1="ASC2";
 conductor_2="ASC2";
 conductor_3="ASC2";
 
-conductor_4="ACSRDUPLEX";
+conductor_4="ACSR DUPLEX";
 conductor_5="ASC2";
 conductor_6="ASC2";
 conductor_7="ASC2";
@@ -65,7 +65,7 @@ tipo_conexion="monofasica";
 
 [Datos_1,resultado_1] = voltaje_extremos(POSTES1,consumo_poste,tipo_conexion,kva_m,CONDUCTOR1,LONG1);
 [Datos_2,resultado_2] = voltaje_extremos(POSTES2,consumo_poste,tipo_conexion,kva_m,CONDUCTOR2,LONG2);
-[Datos_3,resultado_3] = voltaje_extremos(POSTES3,consumo_poste,tipo_conexion,kva_m,CONDUCTOR3,LONG3);
+% [Datos_3,resultado_3] = voltaje_extremos(POSTES3,consumo_poste,tipo_conexion,kva_m,CONDUCTOR3,LONG3);
 
 % n=2;
 % [i_dato1,j_dato1]=size(Datos_1)
