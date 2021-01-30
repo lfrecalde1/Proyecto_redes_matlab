@@ -112,12 +112,12 @@ for k=1:nuevo(2,end)
    if length(c)>1
       aux=Total(1,c-1);
       if all(aux==aux(1))
-          disp('no es nodo')
+%           disp('no es nodo')
           
       else
           C=c;
           c(find(c~=k))=c(find(c~=k))-1;
-          disp('es nodo')
+%           disp('es nodo')
           valor=0;
           suma_total=[];
           
@@ -129,12 +129,12 @@ for k=1:nuevo(2,end)
                 aux2=find(creacion==c(jj));
                
                 if isempty(aux2)
-                    disp('No se suma');
+%                     disp('No se suma');
                     sumatoria(jj)=0;
                     
                 else
                     sumatoria(jj)=sum(Total(3,creacion(1):c(jj)));
-                    disp('se suma');
+%                     disp('se suma');
                 end
             end
             suma=sum(sumatoria);
