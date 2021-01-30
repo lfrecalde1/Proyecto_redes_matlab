@@ -1,6 +1,11 @@
 function [BasedatosS1] = Consumo_poste(N)
 [~, ~, raw] = xlsread('/home/fer/MATLAB_1/Proyecto_redes_matlab/Base_datos.xlsm','CONSUMO POR POSTE');
 raw = raw(7:N,1:5);
+raw(cellfun(@(x) ~isempty(x) && isnumeric(x) && isnan(x),raw)) = {''};
+
+%% Replace non-numeric cells with NaN
+R = cellfun(@(x) ~isnumeric(x) && ~islogical(x),raw); % Find non-numeric cells
+raw(R) = {NaN}; % Replace non-numeric cells
 
 %% Create output variable
 data = reshape([raw{:}],size(raw));
