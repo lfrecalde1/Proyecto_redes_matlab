@@ -10,21 +10,24 @@ kva_m = kvam();
 %% Definir poste a buscar
 poste_1=10879;
 poste_2=194409;
-poste_3=17235973;
+poste_3=10888;
 
 poste_4=189313;
 poste_5=10892;
-poste_6=17235973;
+poste_6=10891;
 poste_7=10890;
 
 poste_8=17235972;
 poste_9=17235973;
 
+poste_10=17183796;
+poste_11=17235973;
 
 %% DEFINIR EL VECTOR DE LOS POSTES
 POSTES1=[poste_1,poste_2,poste_3];
 POSTES2=[poste_4,poste_5,poste_6,poste_7];
 POSTES3=[poste_8,poste_9];
+POSTES4=[poste_10,poste_11];
 
 %% DEFINIR LAS LONGITUDES 
 long_1=36.34;
@@ -39,9 +42,13 @@ long_7=27.97;
 long_8=120.25;
 long_9=167.55;
 
+long_10=212.91;
+long_11=167.55;
+
 LONG1=[long_1,long_2,long_3];
 LONG2=[long_4,long_5,long_6,long_7];
 LONG3=[long_8,long_9];
+LONG4=[long_10,long_11];
 
 %% Definir el tipo de conductor a usar
 conductor_1="ASC2";
@@ -57,23 +64,30 @@ conductor_8="ASC2";
 conductor_9="ASC2";
 
 
+conductor_10="ACSRDUPLEX";
+conductor_11="ASC2";
+
 CONDUCTOR1=[conductor_1,conductor_2,conductor_3];
 CONDUCTOR2=[conductor_4,conductor_5,conductor_6,conductor_7];
 CONDUCTOR3=[conductor_8,conductor_9];
+CONDUCTOR4=[conductor_10,conductor_11];
+
 %% DEFINIR EL TIPO DE CONEXION A USAR EN EL SISTEMA
 tipo_conexion="monofasica";
 
-[Datos_1,resultado_1] = voltaje_extremos(POSTES1,consumo_poste,tipo_conexion,kva_m,CONDUCTOR1,LONG1);
-[Datos_2,resultado_2] = voltaje_extremos(POSTES2,consumo_poste,tipo_conexion,kva_m,CONDUCTOR2,LONG2);
-[Datos_3,resultado_3] = voltaje_extremos(POSTES3,consumo_poste,tipo_conexion,kva_m,CONDUCTOR3,LONG3);
+[Datos_1] = voltaje_extremos(POSTES1,consumo_poste,tipo_conexion,kva_m,CONDUCTOR1,LONG1);
+[Datos_2] = voltaje_extremos(POSTES2,consumo_poste,tipo_conexion,kva_m,CONDUCTOR2,LONG2);
+[Datos_3] = voltaje_extremos(POSTES3,consumo_poste,tipo_conexion,kva_m,CONDUCTOR3,LONG3);
+[Datos_4] = voltaje_extremos(POSTES4,consumo_poste,tipo_conexion,kva_m,CONDUCTOR4,LONG4);
 % 
 
 [i_1,j_1]=size(Datos_1(1,:));
 [i_3,j_3]=size(Datos_3(1,:));
 [i_2,j_2]=size(Datos_2(1,:));
+[i_4,j_4]=size(Datos_4(1,:));
 
-posiciones=[i_1,i_2,i_3;...
-            j_1,j_2,j_3];
+posiciones=[i_1,i_2,i_3,i_4;...
+            j_1,j_2,j_3,j_4];
         
 [i_total,j_total]=size(posiciones);
 
@@ -88,11 +102,11 @@ for i=1:j_total
    
     
 end
-
-Total=[Datos_1,Datos_2,Datos_3];
+[x1,y1]=size(nuevo);
+Total=[Datos_1,Datos_2,Datos_3,Datos_4];
 Total_final=Total;
 
-for k=1:(j_1+j_2+j_3)
+for k=1:nuevo(2,end)
    valor(k)=Total(1,k);
    [r,c]=find(Total==valor(k));
    if length(c)>1
@@ -106,8 +120,9 @@ for k=1:(j_1+j_2+j_3)
           disp('es nodo')
           valor=0;
           suma_total=[];
-          for j=1:length(nuevo)
-            creacion=[nuevo(1,j):1:nuevo(2,j)]
+          
+          for j=1:y1
+            creacion=[nuevo(1,j):1:nuevo(2,j)];
             sumatoria=[];
             suma=0;
             for jj=1:length(c)
@@ -125,12 +140,13 @@ for k=1:(j_1+j_2+j_3)
             suma=sum(sumatoria);
           suma_total(j)=suma; 
           end
-          valor=sum(suma_total)
+          valor=sum(suma_total);
           Total_final(3,C')=valor;
           
       end
    end
    
 end
-          
+
+[resultado,Veri] = extremos_final(Total_final,nuevo);       
         
