@@ -1,6 +1,6 @@
 function [Basedatos] = kvam()
 %% Import the data
-[~, ~, raw] = xlsread('/home/fer/MATLAB_1/Proyecto_redes_matlab/Base_datos.xlsm','kVA-m');
+[~, ~, raw] = xlsread('Base_datos.xlsm','kVA-m');
 raw = raw(2:36,1:8);
 raw(cellfun(@(x) ~isempty(x) && isnumeric(x) && isnan(x),raw)) = {''};
 stringVectors = string(raw(:,[1,2]));

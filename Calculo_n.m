@@ -112,8 +112,7 @@ for k=1:nuevo(2,end)
    if length(c)>1
       aux=Total(1,c-1);
       if all(aux==aux(1))
-%           disp('no es nodo')
-          
+%           disp('no es nodo')    
       else
           C=c;
           c(find(c~=k))=c(find(c~=k))-1;

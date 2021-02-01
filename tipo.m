@@ -26,6 +26,7 @@ if aux==1
         if(isempty(auxiliar_tipo))
             %disp("un valor intorducido no se encuentra en la bas de datos no se puede continuar");
             aux=0;
+            kv(k)=0;
             break
         else
             kv(k)=auxiliar_tipo;
