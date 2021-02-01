@@ -128,7 +128,7 @@ for k=1:nuevo(2,end)
                 aux2=find(creacion==c(jj));
                
                 if isempty(aux2)
-%                     disp('No se suma');
+%                     disp('No se suma')A;
                     sumatoria(jj)=0;
                     
                 else
@@ -147,5 +147,5 @@ for k=1:nuevo(2,end)
    
 end
 
-[resultado,Veri] = extremos_final(Total_final,nuevo);       
+[resultado,Veri] = extremos_final(Total_final,nuevo,C);       
         

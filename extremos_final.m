@@ -1,4 +1,4 @@
-function [resultado,Datos] = extremos_final(Total,nuevo)
+function [resultado,Datos] = extremos_final(Total,nuevo,C)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,7 +8,6 @@ for j=1:y1
     [i_dato,j_dato]=size(creacion);
     total=[];
     for k=1:j_dato
-        C=[9;11];
         for kk=1:length(C)
           
             if creacion(1,k)==C(kk)
