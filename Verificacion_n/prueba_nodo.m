@@ -124,3 +124,7 @@ unique(busqueda(busqueda>0));
 %% calculo de las perdidas en los extremos del sistema
 [resultado,Datos] = extremos_final(Total_final,nuevo,busqueda);
 
+dato_min=min(resultado);
+dato_max=max(resultado);
+
+max_extremos=abs(dato_min-dato_max);
