@@ -81,6 +81,7 @@ LONG2=[lh,lc,ld,lf,lg];
 LONG3=[ln,lm,lf,lg];
 LONG4=[ll lj li lf lg];
 
+
 K1=[ka,kb,kc,kd,kf,kg];
 K2=[kh,kc,kd,kf,kg];
 K3=[kn,km,kf,kg];
