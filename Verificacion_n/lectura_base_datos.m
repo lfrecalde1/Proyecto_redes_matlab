@@ -90,18 +90,18 @@ tipo_conexion="monofasica";
 % posiciones=[i_1,i_2,i_3,i_4;...
 %             j_1,j_2,j_3,j_4];
         
-% posiciones=[i_1,i_2;...
-%             j_1,j_2];
+posiciones=[i_1,i_2;...
+            j_1,j_2];
 
-posiciones=[i_1;...
-            j_1];
+% posiciones=[i_1;...
+%             j_1];
 %% generacion de las posiciones en las que va a mover el vector
 nuevo=aux_posiciones(posiciones);
 
 %% generacion de la matrix de datos
-% Total=[Datos_1,Datos_2,Datos_3,Datos_4];
+Total=[Datos_1,Datos_2];
 
-Total=[Datos_1];
+% Total=[Datos_1];
 
 %% generacion de los nodos en todos los datos introducidos
 [Total_final,busqueda,C] = voltajes_extremos(nuevo,Total);
