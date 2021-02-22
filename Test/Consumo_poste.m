@@ -1,5 +1,5 @@
 function [BasedatosS1] = Consumo_poste(N)
-[~, ~, raw] = xlsread('Base_datos.xlsm','CONSUMO POR POSTE');
+[~, ~, raw] = xlsread('Calculo_centro_carga_1.xlsm','CONSUMO POR POSTE');
 raw = raw(7:N,1:5);
 raw(cellfun(@(x) ~isempty(x) && isnumeric(x) && isnan(x),raw)) = {''};
 

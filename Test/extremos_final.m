@@ -23,14 +23,17 @@ for j=1:y1
             end
         end
         
-%         acumulado(creacion(1,k))=Total(3,creacion(1,k));
-%         
-%         acumulado(creacion(1,k))=sum(Total(3,creacion(1,1):creacion(1,k)));
+        %         acumulado(creacion(1,k))=Total(3,creacion(1,k));
+        %
+        %         acumulado(creacion(1,k))=sum(Total(3,creacion(1,1):creacion(1,k)));
         
         Lt(creacion(1,k))=Total(2,creacion(1,k))*acumulado((creacion(1,k)));
+        
         Parcial(creacion(1,k))=Lt(creacion(1,k))/Total(4,creacion(1,k));
+        
         total(k)=(Total(2,creacion(1,k))*acumulado((creacion(1,k))))/Total(4,creacion(1,k));
-        %% almacenamiento 
+        
+        %% almacenamiento
         subtotal(creacion(1,k))=120*sum(Parcial(creacion(1,1):creacion(1,k)))/100;
         
         resistencia_conductor(creacion(1,k))=resistividad*(Total(2,creacion(1,k))/radio_cuadrado);
@@ -54,7 +57,7 @@ for j=1:y1
     resultado.costo.anual(j)=((resultado.perdidas(j)*720)*0.11)*12;
     
     resultado.perdida_total=sum(resultado.costo.anual(1:j));
-
+    
 end
 dato_min=min(resultado.voltajes_extremos);
 dato_max=max(resultado.voltajes_extremos);
