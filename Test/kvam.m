@@ -1,6 +1,6 @@
 function [Basedatos] = kvam()
 %% Import the data
-[~, ~, raw] = xlsread('Calculo_centro_carga_1.xlsm','kVA-m');
+[~, ~, raw] = xlsread('Calculo_centro_carga_2.xlsm','kVA-m');
 raw = raw(2:36,1:8);
 raw(cellfun(@(x) ~isempty(x) && isnumeric(x) && isnan(x),raw)) = {''};
 stringVectors = string(raw(:,[1,2]));

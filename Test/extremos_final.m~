@@ -19,9 +19,9 @@ for j=1:y1
                 acumulado(creacion(1,k))=Total(3,creacion(1,k));
                 
                 %% seccion para las perdidas
-                [r1,c1]=find(Total==Total(1,creacion(1,k)));
+                [r1,c1]=find(Total==Total(1,creacion(1,k)))
                 
-                acumulado_aux(creacion(1,k))=Total(3,creacion(1,k));
+                acumulado_aux(creacion(1,k))=Total(3,creacion(1,k))/(length(c1));
                 
                 Lt_aux(creacion(1,k))=Total(2,creacion(1,k))*acumulado_aux((creacion(1,k)));
                 
@@ -29,13 +29,13 @@ for j=1:y1
                 
                 subtotal(creacion(1,k))=120*Parcial_aux(creacion(1,k))/100;
                 
-                corriente_conductor(creacion(1,k))=((acumulado_aux(creacion(1,k))*0.86*1000)/(v-subtotal(creacion(1,k))))/length(c1);
+                corriente_conductor(creacion(1,k))=(acumulado_aux(creacion(1,k))*0.86*1000)/(v-subtotal(creacion(1,k)));
+                
+                perdidaa_potencia(creacion(1,k))=resistencia_conductor(creacion(1,k))*( corriente_conductor(creacion(1,k))^2);
                 
                 resistencia_conductor(creacion(1,k))=resistividad*(Total(2,creacion(1,k))/radio_cuadrado);
                 
-                perdidaa_potencia(creacion(1,k))=resistencia_conductor(creacion(1,k))*( corriente_conductor(creacion(1,k))^2)*length(c1);
-                
-                total_2(k)=resistencia_conductor(creacion(1,k))*( corriente_conductor(creacion(1,k))^2)*length(c1);
+                total_2(k)=resistencia_conductor(creacion(1,k))*( corriente_conductor(creacion(1,k))^2);
                 
                 break
             else
@@ -48,18 +48,13 @@ for j=1:y1
                 Parcial_aux(creacion(1,k))=Lt_aux(creacion(1,k))/Total(4,creacion(1,k));
                 
                 subtotal(creacion(1,k))=120*sum(Parcial_aux(creacion(1,1):creacion(1,k)))/100;
-                
-                corriente_conductor(creacion(1,k))=(acumulado_aux(creacion(1,k))*0.86*1000)/(v-subtotal(creacion(1,k)));
-                
-                resistencia_conductor(creacion(1,k))=resistividad*(Total(2,creacion(1,k))/radio_cuadrado);
-                
-                perdidaa_potencia(creacion(1,k))=resistencia_conductor(creacion(1,k))*( corriente_conductor(creacion(1,k))^2);
-                
-                total_2(k)=resistencia_conductor(creacion(1,k))*( corriente_conductor(creacion(1,k))^2);
-                
             end
         end
-  
+        
+        %         acumulado(creacion(1,k))=Total(3,creacion(1,k));
+        %
+        %         acumulado(creacion(1,k))=sum(Total(3,creacion(1,1):creacion(1,k)));
+        
     
         Lt(creacion(1,k))=Total(2,creacion(1,k))*acumulado((creacion(1,k)));
         
