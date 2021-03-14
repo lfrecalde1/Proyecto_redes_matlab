@@ -21,6 +21,7 @@ end
 
 if aux==1
     kv=0;
+    %% bucle para moverse y buscar los conductores
     for k=1:length(conductor)
         auxiliar_tipo=dato(strcmp(kva_m.CONDUCTOR,conductor(1,k)));
         if(isempty(auxiliar_tipo))

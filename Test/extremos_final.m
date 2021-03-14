@@ -7,6 +7,7 @@ radio_cuadrado=Parametros.operador;
 resistividad=Parametros.resistividad;
 
 [x1,y1]=size(nuevo);
+%% bucle para el calculo de las perdidas y las caidas de voltaje
 for j=1:y1
     creacion=[nuevo(1,j):1:nuevo(2,j)];
     [i_dato,j_dato]=size(creacion);

@@ -1,12 +1,13 @@
 function [Datos] = generacion_datos(postes,long,consumo,aux_c,conexion,aux_t)
 if(aux_c==1)&&(aux_t==1)
     disp("Los datos colocados son correctos")
+    %% se genera la matric de datos generales
     Datos=[postes;...
         long;...
         consumo;...
         conexion];
 
-   
+%% verificacionde sis existe algun error en los datos
 elseif(aux_c==1)&&(aux_t==0)
     disp("Existe un error en los datos de kva_m")
     Datos=0;

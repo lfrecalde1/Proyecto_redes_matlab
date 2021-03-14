@@ -2,6 +2,7 @@ function [Total_final,posiciones,C] = voltajes_extremos(nuevo,Total)
 [x1,y1]=size(nuevo);
 Total_final=Total;
 posiciones=[];
+%% bucle para encontrar nodos en el sistema 
 for k=1:nuevo(2,end)
     valor(k)=Total(1,k);
     [r,c]=find(Total==valor(k));
